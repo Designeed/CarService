@@ -63,6 +63,12 @@ namespace CarService
             noteCountTextBlock.Text = _filteredList.Count().ToString();
         }
 
+        private void DisplayItemPerPage()
+        {
+            pageNumberTextBlock.Text = _currentPage.ToString();
+            clientListView.ItemsSource = _filteredList.Skip((CurrentPage - 1) * _itemPerPage).Take(_itemPerPage).ToList();
+        }
+
         private void SetSearchParameters()
         {
             var searchParameters = ClientList
@@ -85,12 +91,6 @@ namespace CarService
             DisplayItemPerPage();
         }
 
-        private void DisplayItemPerPage()
-        {
-            pageNumberTextBlock.Text = _currentPage.ToString();
-            clientListView.ItemsSource = _filteredList.Skip((CurrentPage - 1) * _itemPerPage).Take(_itemPerPage).ToList();
-        }
-
         private void ComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (itemPerPageComboBox.SelectedIndex == 0)
@@ -101,7 +101,7 @@ namespace CarService
 
             switch (itemPerPageComboBox.SelectedIndex)
             {
-                case 0: _itemPerPage = new CarServiceModel().Clients.Count(); break;
+                case 0: _itemPerPage = ClientList.Count(); break;
                 case 1: _itemPerPage = 10; break;
                 case 2: _itemPerPage = 50; break;
                 case 3: _itemPerPage = 200; break;
