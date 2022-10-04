@@ -5,6 +5,7 @@ namespace CarService.Data.Local
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("Client")]
     public partial class Client
@@ -47,6 +48,10 @@ namespace CarService.Data.Local
 
         [StringLength(1000)]
         public string PhotoPath { get; set; }
+
+        public string LastVisit => ClientServices.LastOrDefault(client => client.ClientID == ID)?.StartTime.ToString(); 
+
+        public int CountVisit => ClientServices.Select(client => client.ClientID == ID).Count(); 
 
         public virtual Gender Gender { get; set; }
 
