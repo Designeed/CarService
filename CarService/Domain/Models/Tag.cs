@@ -5,11 +5,17 @@ namespace CarService.Data.Local
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Globalization;
+    using System.Windows;
+    using System.Windows.Media;
 
     [Table("Tag")]
     public partial class Tag
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2214:DoNotCallOverridableMethodsInConstructors"
+        )]
         public Tag()
         {
             Clients = new HashSet<Client>();
@@ -25,7 +31,15 @@ namespace CarService.Data.Local
         [StringLength(6)]
         public string Color { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public string HexColor
+        {
+            get { return $"#{Color}"; }
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2227:CollectionPropertiesShouldBeReadOnly"
+        )]
         public virtual ICollection<Client> Clients { get; set; }
     }
 }

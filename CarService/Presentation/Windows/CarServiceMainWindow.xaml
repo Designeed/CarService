@@ -52,6 +52,19 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=ID}">Идентификатор</GridViewColumn>
+                    <GridViewColumn Header="Тэги" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ListBox Background="Transparent" BorderThickness="1" BorderBrush="Black" ItemsSource="{Binding Tags}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Title}" Foreground="{Binding HexColor}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=Gender.Name}">Пол</GridViewColumn>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=FirstName}">Имя</GridViewColumn>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=LastName}">Фамилия</GridViewColumn>
@@ -71,6 +84,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
             <ComboBox Name="itemPerPageComboBox" Grid.Column="0" SelectionChanged="ComboBoxSelectionChanged">
@@ -83,9 +97,14 @@
             <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">
                 <TextBlock Text=" Выведено записей: "/>
                 <TextBlock Name="noteCountTextBlock" Text="0"/>
+                <TextBlock Text=" из "/>
+                <TextBlock Name="totalNoteCountTextBlock" Text="0"/>
             </StackPanel>
-            
-            <StackPanel x:Name="pageSelectorStackPanel" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+
+            <Button Name="currentMounthBirthdayButton" Content="Показать ДР на текуший месяц" Grid.Column="2" HorizontalAlignment="Right" Padding="10, 0, 10, 0" Click="currentMounthBirthdayButton_Click"/>
+
+
+            <StackPanel x:Name="pageSelectorStackPanel" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="40, 0, 0, 0">
                 <Button Name="previousButtonPage" Content="&lt;" Background="White" Width="50" Click="PreviousButtonPageClick"/>
                 <TextBlock Name="pageNumberTextBlock" Text="1" Margin="5"/>
                 <Button Name="nextButtonPage" Content=">" Background="White" Width="50" Click="NextButtonPageClick"/>
@@ -99,9 +118,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <Button Name="addClientButton" Content="Добавить" FontSize="20" Background="#FFFFFFE1" Grid.Column="0"/>
-            <Button Name="aditClientButton" Content="Редактировать" FontSize="20" Background="LightGreen" Grid.Column="1"/>
-            <Button Name="deleteClientButton" Content="Удалить" FontSize="20" Grid.Column="2" Background="#FFFD9494"/>
+            <Button Name="addClientButton" Content="Добавить" FontSize="20" Background="#FFFFFFE1" Grid.Column="0" Click="addClientButton_Click"/>
+            <Button Name="editClientButton" Content="Редактировать" FontSize="20" Background="LightGreen" Grid.Column="1" Click="editClientButton_Click"/>
+            <Button Name="deleteClientButton" Content="Удалить" FontSize="20" Grid.Column="2" Background="#FFFD9494" Height="26" VerticalAlignment="Top" Click="deleteClientButton_Click"/>
         </Grid>
     </Grid>
 </Window>
