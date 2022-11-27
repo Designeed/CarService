@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarService.Presentation.Windows"
         mc:Ignorable="d"
-        Title="ClientVisitInfoWindow" Height="450" Width="800">
-    <ListView Name="listViewClientVisit">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=StartTime, StringFormat='dd.MM.yyyy'}">Дата Посещения</GridViewColumn>
-                <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=StartTime, StringFormat='HH.mm'}">Время посещения</GridViewColumn>
-            </GridView>
-        </ListView.View>
-    </ListView>
+        Title="ClientVisitInfoWindow" Height="450" Width="800" FontFamily="Tw Cen MT" FontSize="20">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Записей не найдено</TextBlock>
+        <ListView Name="listViewClientVisit">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=StartTime, StringFormat='dd.MM.yyyy'}">Дата Посещения</GridViewColumn>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=StartTime, StringFormat='HH.mm'}">Время посещения</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 </Window>

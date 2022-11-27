@@ -24,9 +24,14 @@ namespace CarService.Presentation.Windows
         {
             InitializeComponent();
 
-            listViewClientVisit.ItemsSource = new CarServiceModel().ClientServices
+            var itemSoruce = new CarServiceModel().ClientServices
                 .Where(clientService => clientService.ClientID == inputClient.ID)
                 .ToList();
+
+            listViewClientVisit.ItemsSource = itemSoruce;
+
+            listViewClientVisit.Visibility =
+                itemSoruce.Count == 0 ? Visibility.Hidden : Visibility.Visible;
         }
     }
 }
