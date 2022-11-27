@@ -10,7 +10,10 @@ namespace CarService.Data.Local
     [Table("Client")]
     public partial class Client
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2214:DoNotCallOverridableMethodsInConstructors"
+        )]
         public Client()
         {
             ClientServices = new HashSet<ClientService>();
@@ -49,16 +52,26 @@ namespace CarService.Data.Local
         [StringLength(1000)]
         public string PhotoPath { get; set; }
 
-        public string LastVisit => ClientServices.LastOrDefault(client => client.ClientID == ID)?.StartTime.ToString(); 
+        public string LastVisit =>
+            ClientServices
+                .LastOrDefault(clientServices => clientServices.ClientID == ID)
+                ?.StartTime.ToString();
 
-        public int CountVisit => ClientServices.Select(client => client.ClientID == ID).Count(); 
+        public int CountVisit =>
+            ClientServices.Select(clientServices => clientServices.ClientID == ID).Count();
 
         public virtual Gender Gender { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2227:CollectionPropertiesShouldBeReadOnly"
+        )]
         public virtual ICollection<ClientService> ClientServices { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2227:CollectionPropertiesShouldBeReadOnly"
+        )]
         public virtual ICollection<Tag> Tags { get; set; }
     }
 }

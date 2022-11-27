@@ -270,5 +270,10 @@ namespace CarService
         {
             ChangeButtonState();
         }
+
+        private void clientListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            new ClientVisitInfoWindow(clientListView.SelectedItem as Client).ShowDialog();
+        }
     }
 }

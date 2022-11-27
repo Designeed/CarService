@@ -107,12 +107,19 @@
       <DependentUpon>CarServiceMainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Presentation\Windows\ClientVisitInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\Windows\EditClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presentation\Windows\ClientVisitInfoWindow.xaml.cs">
+      <DependentUpon>ClientVisitInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Windows\EditClientWindow.xaml.cs">
       <DependentUpon>EditClientWindow.xaml</DependentUpon>
     </Compile>

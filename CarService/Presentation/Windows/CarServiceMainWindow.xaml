@@ -48,7 +48,7 @@
             </GroupBox>
         </Grid>
         
-        <ListView Name="clientListView" Grid.Row="2" FontSize="15">
+        <ListView Name="clientListView" Grid.Row="2" FontSize="15" MouseDoubleClick="clientListView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=ID}">Идентификатор</GridViewColumn>
